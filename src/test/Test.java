@@ -1,10 +1,5 @@
 package test;
 
-import java.lang.foreign.ValueLayout.OfBoolean;
-import java.net.Authenticator;
-import java.util.function.LongUnaryOperator;
-
-import javax.naming.InitialContext;
 
 import oopmodeling.Planet;
 import oopmodeling.Star;
