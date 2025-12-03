@@ -17,5 +17,27 @@ public class Contact {
     @Override
     public String toString() {
         return name + " - " + phone;
+        
+        
+        
+        
+       
+        
+        
     }
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+    
+    
+    
+    
+    
+    
 }
+
