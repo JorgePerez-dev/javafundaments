@@ -19,8 +19,20 @@ public class LinkedListImpl<E> implements List<E> {
 	
 
 	@Override
-	public void add(E e) {
+	public void add(E data) {
 		// TODO Auto-generated method stub
+		Node<E>   newNode = new Node<E>(data);
+		
+		if (first == null) {
+			first = Last = newNode;
+			
+		}
+		else {
+			Last.setNext(newNode);
+			
+			Last = newNode;
+		}
+		
 		
 	}
 
