@@ -2,8 +2,9 @@ package datastructure.list;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
-
+import java.util.concurrent.ConcurrentLinkedDeque;
 
 import oopmodeling.Planet;
 
@@ -46,8 +47,16 @@ public class builtinDataStructure {
 		
 		//peek method is used to read the element on the top of the stack
 		System.out.println(callStack.peek());
+		System.out.println(callStack.pop());
+		System.out.println(callStack.peek());
 		
+		Queue<Integer> queue = new ConcurrentLinkedDeque<>();
+		queue.add(123);
+		queue.add(13);
+		queue.add(12300);
 		
+		//Retrieves and removes the head of this queue, or returns null if this queue is empty.
+		System.out.println(queue.poll());
 		
 		ArrayList<Planet> arr;
 		
