@@ -38,20 +38,46 @@ public class LinkedListImpl<E> implements List<E> {
 
 	@Override
 	public E removeLast() {
-		// TODO Auto-generated method stub
-		return null;
+	    if (first == null) {
+	        return null;
+	    }
+
+	    if (first == Last) {
+	        E data = first.getData();
+	        first = null;
+	        Last = null;
+	        return data;
+	    }
+
+	    Node<E> current = first;
+
+	    while (current.getNext() != Last) {
+	        current = current.getNext();
+	    }
+
+	    E data = Last.getData();
+
+	    current.setNext(null); 
+
+	    return data;
 	}
 
 	@Override
 	public void clear() {
-		// TODO Auto-generated method stub
-		
+	    first = null;
+	    Last = null;
 	}
 
 	@Override
 	public void printList() {
-		// TODO Auto-generated method stub
-		
+	    Node<E> current = first;
+
+	    while (current != null) {
+	        System.out.print(current.getData() + " ");
+	        current = current.getNext();
+	    }
+
+	    System.out.println();
 	}
 
 }
