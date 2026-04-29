@@ -6,11 +6,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
-import addresbook.AddressBook;  // <-- corregido
+import addresbook.AddressBook;  // 
+import addresbook.Contact;
 
 public class reflectiontest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, SecurityException{
 
         // Forma 1
         Class<AddressBook> cls1 = AddressBook.class;
@@ -23,7 +24,7 @@ public class reflectiontest {
 
         // Forma 4
         try {
-            Class<?> class4 = Class.forName("addressbook.AddressBook"); // <-- corregido
+            Class<?> class4 = Class.forName("addressbook.AddressBook"); // 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -33,7 +34,41 @@ public class reflectiontest {
         inspectConstructors(cls1);
         inspectMethods(cls1);
         inspectAnnotations(cls1);
+        
+                Contact contact1 = new Contact("jorge", "675849");
+                
+                manipulateObject(contact1);
+                
+        
+        
     }
+    
+    private static  void manipulateObject(Contact contact) throws NoSuchFieldException, SecurityException {
+    	Class<?> cls = contact.getClass();
+    	
+    	Field[] fields = cls.getDeclaredFields();
+    	
+    	Field field = cls.getDeclaredField("phonenumber");
+    	System.out.println(contact.getPhone());
+    	
+    	//read the valuer of a specified field
+    	
+    	//modify the value of a field of the object;
+    	try {
+			field.set(fields, field);
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	
+		
+	}
+    
+    
 
     private static void inspectClass(Class<AddressBook> cls1) {
         cls1.getDeclaredConstructors();
