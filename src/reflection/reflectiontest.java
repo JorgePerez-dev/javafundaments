@@ -3,6 +3,7 @@ package reflection;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
@@ -39,17 +40,55 @@ public class reflectiontest {
                 
                 manipulateObject(contact1);
                 
+                invokeMethodofAnObject(contact1);
+                
         
         
     }
     
-    private static  void manipulateObject(Contact contact) throws NoSuchFieldException, SecurityException {
+    
+    
+    
+    
+    
+    
+    
+    private static void invokeMethodofAnObject(Object object ) {
+    	Class<?> cls = object.getClass();
+    	try {
+			Method method = cls.getDeclaredMethod("getName", String.class);
+			method.invoke(object, null);
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+
+
+
+
+
+
+
+	private static  void manipulateObject(Contact contact) throws NoSuchFieldException, SecurityException {
     	Class<?> cls = contact.getClass();
     	
     	Field[] fields = cls.getDeclaredFields();
     	
-    	Field field = cls.getDeclaredField("phonenumber");
+    	Field field = cls.getDeclaredField("phone");
     	System.out.println(contact.getPhone());
+    	//change the access modifier from private to public
     	
     	//read the valuer of a specified field
     	
