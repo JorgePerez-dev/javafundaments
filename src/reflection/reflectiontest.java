@@ -9,6 +9,7 @@ import java.lang.reflect.Parameter;
 
 import addresbook.AddressBook;  // 
 import addresbook.Contact;
+import jdk.jshell.TypeDeclSnippet;
 
 public class reflectiontest {
 
@@ -42,6 +43,8 @@ public class reflectiontest {
                 
                 invokeMethodofAnObject(contact1);
                 
+                invokeconstructorOfAnObject(cls1);
+                
         
         
     }
@@ -53,7 +56,46 @@ public class reflectiontest {
     
     
     
-    private static void invokeMethodofAnObject(Object object ) {
+    private static void invokeconstructorOfAnObject(Class<?> cls) {
+    	try {
+			cls.getConstructor().newInstance();
+			Object obj = cls.getConstructor().newInstance();
+			System.out.println(cls.getConstructor().newInstance());
+			System.out.println(cls.getConstructor().newInstance());
+			System.out.println(obj);
+
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
+
+
+
+
+	private static void invokeMethodofAnObject(Object object ) {
     	Class<?> cls = object.getClass();
     	try {
 			Method method = cls.getDeclaredMethod("getName", String.class);
